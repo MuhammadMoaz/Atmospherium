@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Setting webpage title and favicon -->
+    <title>Atmospherium</title>
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+
+    <!-- Google Font Link -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
+
+    <!-- External CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- External JS Link to Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- External JS Link -->
+    <script src="script.js"></script>
+
+    <!-- FontAwesome Link -->
+    <script src="https://kit.fontawesome.com/dc13d32668.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1 onClick="window.location.reload()">Atmospherium</h1>
+
+        <div class="search-wrapper">
+
+            <div class="search-bar">
+                <input type="text" id="city" placeholder="Enter City...">
+                <button onclick="getWeather()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id='weather-wrapper-div' class="weather-wrapper">
+
+        <div class="weather-top-row">
+
+            <div class="highlight-box">
+
+                <h2 class="highlight-title">Now</h2>
+    
+                <div id='current-weather' class="current-weather">
+    
+                    <p class="temp-text">xx&deg</p>
+                    <img id='weather-icon' class="weather-icon" width=128 height=128>
+                    
+                </div>
+    
+                <p id='desc-text' class="desc-text">Overcast Clouds</p>
+                <hr class="divider">
+    
+                <ul id='meta-list' class="fa-ul">
+                    <li class="location-text"><span class="fa-li"><i class="fa-solid fa-location-dot"></i></span>City, Country</li>
+                    <li class="date-text"><span class="fa-li"><i class="fa-regular fa-calendar"></i></span>Day Date, Month</li>
+                    <li class="time-text"><span class="fa-li"><i class="fa-regular fa-clock"></i></span>Time</li>
+                </ul>
+    
+            </div>
+    
+            <div class="stat-box-wrapper">
+    
+                <div class="stat-title-box"><h2 class="stat-title">Highlights</h2></div>
+    
+                <div class="stat-box">
+                    <div id='feels-like-stat' class="feels-like-stat">
+                    <p>Feels Like</p>
+                    <p>xx&degC</p>
+                    </div>
+    
+                    <div id='wind-speed-stat' class="wind-speed-stat">
+                    <p>Wind Speed</p>
+                    <p>xx m/s</p>
+                    </div>
+    
+                    <div id='visibility-stat' class="visibility-stat">
+                    <p>Visibility</p>
+                    <p>xx%</p>
+                    </div>
+    
+                    <div id='humidity-stat' class="humidity-stat">
+                    <p>Humidity</p>
+                    <p>xx%</p>
+                    </div>
+    
+                    <div class="sun-stat-box">
+                    
+                    <div id='sunrise-stat' class="sunrise-stat">
+                        <p>Sunrise</p>
+                        <p>x:xxAM</p>
+                    </div>
+                    
+                    <div id='sunset-stat' class="sunset-stat">
+                        <p>Sunset</p>
+                        <p>x:xxPM</p>
+                    </div>
+                    
+                    </div>
+    
+                    <div id='psi-stat' class="psi-stat">
+                    <p>Pressure</p>
+                    <p>xxxxhPa</p>
+                    </div>
+                </div>
+    
+            </div>
+
+        </div>
+
+        <div class="weather-bottom-row">
+            
+            <div id='week-forecast-div' class="week-forecast-box">
+
+                <h2 class="week-forecast-title">This Week</h2>
+                
+                <div class="week-forecast-item">
+
+                    <img src="" alt="" width="64" height="64">
+                    <p class="week-forecast-temp-label">55&deg</p>
+                    <p class="week-forecast-date-label">13 Sep</p>
+                    <p class="week-forecast-day-label">Monday</p>
+
+                </div>
+
+                <div class="week-forecast-item">
+
+                    <img src="" alt="" width="64" height="64">
+                    <p class="week-forecast-temp-label">55&deg</p>
+                    <p class="week-forecast-date-label">13 Sep</p>
+                    <p class="week-forecast-day-label">Tuesday</p>
+
+                </div>
+
+                <div class="week-forecast-item">
+
+                    <img src="" alt="" width="64" height="64">
+                    <p class="week-forecast-temp-label">55&deg</p>
+                    <p class="week-forecast-date-label">13 Sep</p>
+                    <p class="week-forecast-day-label">Wednesday</p>
+
+                </div>
+
+                <div class="week-forecast-item">
+
+                    <img src="" alt="" width="64" height="64">
+                    <p class="week-forecast-temp-label">55&deg</p>
+                    <p class="week-forecast-date-label">13 Sep</p>
+                    <p class="week-forecast-day-label">Thursday</p>
+
+                </div>
+
+                <div class="week-forecast-item">
+
+                    <img src="" alt="" width="64" height="64">
+                    <p class="week-forecast-temp-label">55&deg</p>
+                    <p class="week-forecast-date-label">13 Sep</p>
+                    <p class="week-forecast-day-label">Friday</p>
+
+                </div>
+
+            </div>
+
+            <div class="day-forecast-box">
+                
+                <h2 class="day-forecast-title">Today at</h2>
+
+                <div id='hourly-forecast-div' class="day-forecast-inner-box">
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                    <div class="hourly-item">
+
+                        <p class="day-forecast-time-label">7PM</p>
+                        <img src="" alt="" width="96" height="96">
+                        <p class="day-forecast-temp-label">35&deg</p>
+    
+                    </div>
+
+                </div>
+
+                <div id='hourly-wind-forecast-div' class="hourly-wind-forecast-box">
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+                    
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div>
+
+                    <div class="wind-item">
+
+                        <i class="fa-solid fa-location-arrow fa-3x"></i>
+                        <p class="wind-forecast-speed">7m/s</p>
+
+                    </div> 
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</body>
+</html>
